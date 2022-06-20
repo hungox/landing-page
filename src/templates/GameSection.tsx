@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 
 import { CardGame } from '../components/CardGame';
-import { Section } from '../layout/Section';
+import { Section } from '../components/layout/Section';
 
 const GameSection = () => {
   const { t } = useTranslation('common');

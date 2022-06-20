@@ -2,13 +2,14 @@ import { useState } from 'react';
 
 import { useRouter } from 'next/router';
 
-// type ILanguageDropdownProps = {
-//   title: string;
-//   description: string;
-//   image: string;
-// };
+import { ChevronDownSvg } from './svgs/ChevronDownSvg';
 
-const LanguageDropdown = () => {
+type ILanguageDropdownProps = {
+  left?: boolean;
+  className?: string;
+};
+
+const LanguageDropdown = (props: ILanguageDropdownProps) => {
   const router = useRouter();
 
   const data = [
@@ -74,21 +75,24 @@ const LanguageDropdown = () => {
   });
 
   return (
-    <div className="dropdown relative">
-      <div className="flex cursor-pointer justify-end" onClick={onClick}>
+    <div className={`dropdown relative ${props.className}`}>
+      <div
+        className="flex cursor-pointer justify-end items-center"
+        onClick={onClick}
+      >
         <img
           className="mr-[14px]"
           src={`${router.basePath}${getFlagActive()}`}
           alt=""
         />
-        <img
-          className=""
-          src={`${router.basePath}/assets/images/chevron-down.svg`}
-          alt=""
-        />
+        <ChevronDownSvg />
       </div>
       {showMenu && (
-        <ul className="bg-white p-[10px] rounded-[8px] text-[10px] font-bold text-black absolute min-w-[170px] right-0">
+        <ul
+          className={`bg-white p-[10px] rounded-[8px] text-[10px] font-bold text-black absolute min-w-[170px] ${
+            props.left ? 'left-0' : 'right-0'
+          }`}
+        >
           {listItems}
         </ul>
       )}

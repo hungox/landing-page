@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { useTranslation } from 'next-i18next';
 
+import { Section } from '../components/layout/Section';
+import { Navbar } from '../components/navigation/Navbar';
 import { TextBox } from '../components/TextBox';
 import { TimerContainer } from '../components/TimerContainer';
-import { Section } from '../layout/Section';
-import { Navbar } from '../navigation/Navbar';
 
 const HomeSection = () => {
   const { t } = useTranslation('common');
@@ -55,17 +55,17 @@ const HomeSection = () => {
   }, [time]);
 
   return (
-    <Section className="relative">
+    <Section className="relative mb-[230px] md:mb-0">
       <Navbar />
       <div className="top-bg h-[85vh] md:h-[100vh] relative"></div>
       <div className="relative">
         <img
-          className="absolute bottom-0 w-[800px] h-[800px]"
+          className="hidden md:block absolute bottom-0 w-[800px] h-[800px]"
           src="/assets/images/fairy-man.png"
           alt=""
         />
         <img
-          className="absolute z-10 bottom-[0%] w-full"
+          className="absolute hidden 2xl:block z-10 bottom-[0%] w-full"
           src="/assets/images/top-bg-2.png"
           alt=""
         />
@@ -87,6 +87,11 @@ const HomeSection = () => {
           <TextBox className="text-black" />
         </div>
       </div>
+      <img
+        className="absolute md:hidden top-[82%] left-[20%] w-[351px] h-[351px]"
+        src="/assets/images/fairy-man.png"
+        alt=""
+      />
     </Section>
   );
 };

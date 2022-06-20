@@ -167,3 +167,30 @@
     height: 10%;
     position: absolute;
 }
+
+.focus-visible-only:hover,
+.focus-visible-only:focus,
+.focus-visible-only:focus-visible {
+  outline: none !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.lang-dropdown-mobile {
+  border: 1px solid #AFAFAF;
+  padding: 2px 14px;
+  border-radius: 8px;
+  background-color: #F6F6F6;
+  color: #000000
+}
+
+.menu-ul-mobile li {
+  padding: 22px 0;
+  width: 100%;
+  text-align: center;
+} 
+
+.menu-ul-mobile li:not(:last-child) {
+  border-bottom: 1px solid #EEEEEE;
+} 

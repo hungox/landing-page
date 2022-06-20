@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { ArrowSvg } from '../components/svgs/ArrawSvg';
-import { Meta } from '../layout/Meta';
-import { Section } from '../layout/Section';
+import { Meta } from '../components/layout/Meta';
+import { Section } from '../components/layout/Section';
+import { ArrowSvg } from '../components/svgs/ArrowSvg';
 import { AppConfig } from '../utils/AppConfig';
 import { AboutUsSection } from './AboutUsSection';
-import { Footer } from './Footer';
+import { Footer } from './FooterSection';
 import { GameSection } from './GameSection';
 import { HomeSection } from './HomeSection';
 import { PartnerSection } from './PartnerSection';
@@ -26,10 +26,12 @@ const Base = () => {
   const scrollTop = useRef<any>();
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      window.scrollY > 100
-        ? (scrollTop.current.style.display = 'flex')
-        : (scrollTop.current.style.display = 'none');
+      if (scrollTop && scrollTop.current) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        window.scrollY > 100
+          ? (scrollTop.current.style.display = 'flex')
+          : (scrollTop.current.style.display = 'none');
+      }
     });
   });
 
@@ -40,9 +42,6 @@ const Base = () => {
       <AboutUsSection />
       <GameSection />
       <PartnerSection />
-      {/* <Hero /> */}
-      {/* <VerticalFeatures /> */}
-      {/* <Banner /> */}
       <Footer />
       <div
         onClick={() => setPosition({ top: 0, left: 0 })}

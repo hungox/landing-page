@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 import { useTranslation } from 'next-i18next';
 
+import { Section } from '../components/layout/Section';
 import { SlideLeftSvg } from '../components/svgs/SlideLeftSvg';
 import { SlideRightSvg } from '../components/svgs/SlideRightSvg';
-import { Section } from '../layout/Section';
 
 const PartnerSection = () => {
   const { t } = useTranslation('common');

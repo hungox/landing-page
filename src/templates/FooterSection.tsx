@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 
+import { Section } from '../components/layout/Section';
 import { TextBox } from '../components/TextBox';
-import { Section } from '../layout/Section';
 
 const Footer = () => {
   const { t } = useTranslation('common');

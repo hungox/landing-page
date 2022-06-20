@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 
 import { AboutInfo } from '../components/AboutInfo';
 import { AboutNumberBox } from '../components/AboutNumberBox';
-import { Section } from '../layout/Section';
+import { Section } from '../components/layout/Section';
 
 const AboutUsSection = () => {
   const { t } = useTranslation('common');

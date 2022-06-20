@@ -17,7 +17,9 @@ const CardGame = (props: ICardGameProps) => {
         alt={props.title}
       />
       <div className="absolute inset-x-0 bottom-0 flex flex-col p-[8px] md:gap-[16px] md:px-8 md:pb-10">
-        <span className="text-[24px] md:text-5xl md:leading-[60px] font-bold">{props.title}</span>
+        <span className="text-[24px] md:text-5xl md:leading-[60px] font-bold">
+          {props.title}
+        </span>
         <span className="text-[12px]">{props.description}</span>
       </div>
     </div>

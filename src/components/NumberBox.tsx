@@ -9,7 +9,9 @@ const NumberBox = (props: INumberBoxProps) => {
       <span className="font-playfair font-black text-[36px] md:text-6xl leading-[30px] tracking-[4.8px]">
         {props.num}
       </span>
-      <span className="font-bold leading-[19px] text-[12px] md:text-[16px]">{props.unit}</span>
+      <span className="font-bold leading-[19px] text-[12px] md:text-[16px]">
+        {props.unit}
+      </span>
     </div>
   );
 };

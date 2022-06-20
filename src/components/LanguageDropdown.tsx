@@ -45,7 +45,6 @@ const LanguageDropdown = () => {
     router.push(`/${key}`);
   };
 
-
   const getFlagActive = () => {
     const lang = router.locale;
     const langObject = data.find((x) => x.key === lang);

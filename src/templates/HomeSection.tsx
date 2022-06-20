@@ -10,7 +10,7 @@ import { Navbar } from '../navigation/Navbar';
 const HomeSection = () => {
   const { t } = useTranslation('common');
 
-  const [time, setTime] = useState<number>(7);
+  const [time] = useState<number>(7);
   const [days, setDays] = useState<number>(0);
   const [hours, setHours] = useState<number>(0);
   const [minutes, setMinutes] = useState<number>(0);

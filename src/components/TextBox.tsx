@@ -6,7 +6,7 @@ import { ArrowRightSvg } from './svgs/ArrowRightSvg';
 
 type ITextBoxProps = {
   className?: string;
-  transparent: boolean;
+  transparent?: boolean;
 };
 
 const TextBox = (props: ITextBoxProps) => {

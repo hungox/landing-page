@@ -11,7 +11,10 @@ import { HomeSection } from './HomeSection';
 import { PartnerSection } from './PartnerSection';
 
 const Base = () => {
-  const [position, setPosition] = useState({ top: 0, left: 0 });
+  const [position, setPosition] = useState<{ top: number; left: number }>({
+    top: 0,
+    left: 0,
+  });
   useEffect(() => {
     window.scroll({
       top: position.top,
@@ -20,10 +23,10 @@ const Base = () => {
     });
   });
 
-  const [visibility, setVisibility] = useState(false);
-  const scrollTop = useRef();
+  const scrollTop = useRef<any>();
   useEffect(() => {
-    window.addEventListener('scroll', (e) => {
+    window.addEventListener('scroll', () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       window.scrollY > 100
         ? (scrollTop.current.style.display = 'flex')
         : (scrollTop.current.style.display = 'none');
@@ -42,12 +45,9 @@ const Base = () => {
       {/* <Banner /> */}
       <Footer />
       <div
-        onClick={() =>
-          setPosition({ ...position, position: { top: 0, left: 0 } })
-        }
-        className="circle"
+        onClick={() => setPosition({ top: 0, left: 0 })}
+        className="circle w-[67px] h-[67px] rotate-[180deg] cursor-pointer bg-white drop-shadow-landing rounded-full flex items-center justify-center fixed bottom-[30px] right-[50px] z-[99]"
         ref={scrollTop}
-        className="w-[67px] h-[67px] rotate-[180deg] cursor-pointer bg-white drop-shadow-landing rounded-full flex items-center justify-center fixed bottom-[30px] right-[50px] z-[99]"
       >
         <ArrowSvg />
       </div>

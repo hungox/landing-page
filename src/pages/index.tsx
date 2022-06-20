@@ -4,7 +4,7 @@ import { Base } from '../templates/Base';
 
 const Index = () => <Base />;
 
-export const getStaticProps = async ({ locale }) => ({
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
     ...(await serverSideTranslations(locale, ['common', 'footer'])),
   },

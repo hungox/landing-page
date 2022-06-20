@@ -59,13 +59,15 @@ const PartnerSection = () => {
   const { length } = data;
   data.push(...data);
   const sleep = (ms = 0) => {
+    // eslint-disable-next-line no-promise-executor-return
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
 
-  const createItem = (position, idx) => {
+  const createItem = (position: number, idx: number) => {
     const item = {
       styles: {
         transform: `translateX(${position * slideWidth}px)`,
+        opacity: 1,
       },
       image: data[idx]?.image,
     };
@@ -87,8 +89,8 @@ const PartnerSection = () => {
     return item;
   };
 
-  const CarouselSlideItem = ({ pos, idx, activeIdx }) => {
-    const item = createItem(pos, idx, activeIdx);
+  const CarouselSlideItem = ({ pos, idx }: { pos: number; idx: number }) => {
+    const item = createItem(pos, idx);
 
     return (
       <li className="carousel__slide-item" style={item.styles}>
@@ -101,16 +103,16 @@ const PartnerSection = () => {
 
   const keys = Array.from(Array(data.length).keys());
 
-  const [items, setItems] = useState(keys);
+  const [items, setItems] = useState<any>(keys);
   const [isTicking, setIsTicking] = useState(false);
-  const [activeIdx, setActiveIdx] = useState(0);
+  // const [activeIdx, setActiveIdx] = useState(0);
   const bigLength = items.length;
 
   const prevClick = (jump = 1) => {
     if (!isTicking) {
       setIsTicking(true);
-      setItems((prev) => {
-        return prev.map((_, i) => prev[(i + jump) % bigLength]);
+      setItems((prev: any) => {
+        return prev.map((_: any, i: number) => prev[(i + jump) % bigLength]);
       });
     }
   };
@@ -118,28 +120,31 @@ const PartnerSection = () => {
   const nextClick = (jump = 1) => {
     if (!isTicking) {
       setIsTicking(true);
-      setItems((prev) => {
-        return prev.map((_, i) => prev[(i - jump + bigLength) % bigLength]);
+      setItems((prev: any) => {
+        return prev.map(
+          (_: any, i: number) => prev[(i - jump + bigLength) % bigLength]
+        );
       });
     }
   };
 
-  const handleDotClick = (idx) => {
-    if (idx < activeIdx) prevClick(activeIdx - idx);
-    if (idx > activeIdx) nextClick(idx - activeIdx);
-  };
+  // const handleDotClick = (idx) => {
+  //   if (idx < activeIdx) prevClick(activeIdx - idx);
+  //   if (idx > activeIdx) nextClick(idx - activeIdx);
+  // };
 
   useEffect(() => {
-    console.log('333');
     if (isTicking) sleep(300).then(() => setIsTicking(false));
   }, [isTicking]);
 
   useEffect(() => {
-    setActiveIdx((length - (items[0] % length)) % length) // prettier-ignore
+    // setActiveIdx((length - (items[0] % length)) % length) // prettier-ignore
 
     const autoSlide = setInterval(() => {
-      setItems((prev) => {
-        return prev.map((_, i) => prev[(i - 1 + bigLength) % bigLength]);
+      setItems((prev: any) => {
+        return prev.map(
+          (_: any, i: number) => prev[(i - 1 + bigLength) % bigLength]
+        );
       });
     }, 5000);
     return () => {
@@ -164,13 +169,8 @@ const PartnerSection = () => {
         </div>
         <div className="carousel__container">
           <ul className="partner1 carousel__slide-list w-[251rem] md:w-[196rem]">
-            {items.map((pos, i) => (
-              <CarouselSlideItem
-                key={i}
-                idx={i}
-                pos={pos}
-                activeIdx={activeIdx}
-              />
+            {items.map((pos: number, i: number) => (
+              <CarouselSlideItem key={i} idx={i} pos={pos} />
             ))}
           </ul>
         </div>
